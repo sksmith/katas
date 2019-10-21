@@ -27,7 +27,7 @@ func TestSplitstring(t *testing.T) {
 		}
 		for i, v := range got {
 			if got[i] != test.want[i] {
-				t.Errorf("Splitstrings(%s) got[%d]=[%s] want[%d]=[%s]", test.value, i, got[i], i, test.want[i])
+				t.Errorf("Splitstrings(%s) got[%d]=[%s] want[%d]=[%s]", test.value, i, v, i, test.want[i])
 			}
 		}
 	}
