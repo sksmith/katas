@@ -3,14 +3,7 @@ package convfracts
 import "fmt"
 
 func ConvertFracts(a [][]int) string {
-	denoms := make([]int, len(a))
-
-	for i := range a {
-		a[i] = Simplify(a[i])
-		denoms[i] = a[i][1]
-	}
-
-	lcm := LCM(denoms[0], denoms[1], denoms[2:]...)
+	lcm := LCM(1, a[0], a[1:]...)
 
 	val := ""
 	for _, v := range a {
@@ -45,9 +38,14 @@ func GCD(a, b int) int {
 	return a
 }
 
-// LCM returns Least Common Multiple (LCM)
-func LCM(a, b int, integers ...int) int {
-	result := a * b / GCD(a, b)
+// LCM simplifies the incoming fractions and
+// returns Least Common Multiple (LCM)
+func LCM(lcm int, a []int, integers ...[]int) int {
+	simple := Simplify(a)
+	a[0] = simple[0]
+	a[1] = simple[1]
+
+	result := lcm * a[1] / GCD(lcm, a[1])
 
 	for i := 0; i < len(integers); i++ {
 		result = LCM(result, integers[i])
