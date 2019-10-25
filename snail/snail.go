@@ -14,7 +14,7 @@ func Snail(area [][]int) (path []int) {
 }
 
 func lap(area [][]int, pathIdx int, path []int) []int {
-	if pathIdx == len(path) || area == nil || len(area) == 0 || len(area[0]) == 0 {
+	if pathIdx == len(path) || len(area) == 0 || len(area[0]) == 0 {
 		return path
 	}
 
